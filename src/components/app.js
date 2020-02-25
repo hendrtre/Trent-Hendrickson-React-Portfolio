@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import axios from 'axios'
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,25 +15,7 @@ import PortfolioDetail from "./portfolio/portfolio-detail"
 import NoMatch from './pages/no-match'
 
 export default class App extends Component {
-  constructor() {
-    super()
-
-    this.getPortfolioItems = this.getPortfolioItems.bind()
-  }
-
-  getPortfolioItems() {
-    axios
-      .get('https://trenthendrickson.devcamp.space/portfolio/portfolio_items')
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
-  render() {
-    this.getPortfolioItems()
+   render() {
     return (
       <div className='app'>
         <Router>
