@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import axios from 'axios'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +15,7 @@ import Blog from "./pages/blog"
 import PortfolioDetail from "./portfolio/portfolio-detail"
 import Auth from './pages/auth'
 import NoMatch from './pages/no-match'
+
 
 export default class App extends Component {
   constructor(props) {
@@ -37,6 +39,34 @@ export default class App extends Component {
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN"
     })
+  }
+  
+  checkLoginStatus() {
+    return axios.get("https://api.devcamp.space/logged_in", 
+      { withCredentials: true 
+      }).then(response => {
+        const loggedIn = response.data.logged_in
+        const loggedInStatus = this.state.loggedInStatus
+
+        if (loggedIn & loggedInStatus === "LOGGED_IN") {
+          return loggedIn
+        } else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
+          this.setState({
+            loggedInStatus: "LOGGED_IN"
+          }) 
+        } else if (!loggedIn && loggedInStatus === "LOGGED_IN") {
+          this.setState({
+            loggedInStatus: "NOT_LOGGED_IN"
+          }) 
+        }
+      })
+      .catch(error => {
+        console.log('Error', error)
+      })
+  }
+
+  componentDidMount() {
+    this.checkLoginStatus()
   }
 
   render() {
