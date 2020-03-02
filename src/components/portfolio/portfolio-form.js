@@ -7,8 +7,8 @@ export default class PortfolioForm extends Component {
 
         this.state = {
             name: "",
-            description: "eCommerce",
-            category: "",
+            description: "",
+            category: "eCommerce",
             position: "",
             url: "",
             thumb_image: "",
@@ -45,7 +45,7 @@ export default class PortfolioForm extends Component {
             this.buildForm(),
             { withCredentials: true }
         ).then(response => {
-            console.log('response', response)
+            this.props.handleSuccessfulFormSubmission(response.data.portfolio_item)
         }).catch(error => {
             console.log("portfolio from handleSubmit error", error)
         })
