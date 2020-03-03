@@ -131,7 +131,7 @@ handleSubmit(event) {
 render() {
     return (
         <form onSubmit={this.handleSubmit} className="portfolio-form-wrapper">
-          <div>
+          <div className="two-column">
             <input
               type="text"
               name="name"
@@ -149,7 +149,7 @@ render() {
               />
           </div>
 
-          <div>
+          <div className="two-column">
             <input
               type="text"
               name="position"
@@ -170,7 +170,7 @@ render() {
             </select>
           </div>
 
-          <div>
+          <div className="one-column">
             <textarea
               type="text"
               name="description"
@@ -180,7 +180,7 @@ render() {
               />
           </div>
 
-          <div className="image-uploaders">
+          <div className="image-uploaders three-column">
             <DropzoneComponent
               ref={this.thumbRef}
               config={this.componentConfig()}
