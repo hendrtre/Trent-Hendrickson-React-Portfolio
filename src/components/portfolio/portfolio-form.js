@@ -5,6 +5,7 @@ import DropzoneComponent from "react-dropzone-component";
 import "../../../node_modules/react-dropzone-component/styles/filepicker.css";
 import "../../../node_modules/dropzone/dist/min/dropzone.min.css";
 
+
 export default class PortfolioForm extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +39,18 @@ export default class PortfolioForm extends Component {
 }
 
 deleteImage(imageType) {
-  console.log("deleteImage", imageType)
+  console.log(imageType)
+  axios.delete(
+    `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`, 
+    { withCredentials: true }
+  ).then(response => {
+    this.setState({
+      [`${imageType}_url`]: ""
+    })
+  })
+  .catch(error => {
+    console.log("deleteImage error", error)
+  })
 }
 
 componentDidUpdate() {
@@ -278,7 +290,7 @@ render() {
               <div className="portfolio-manager-image-wrapper">
                 <img src={this.state.logo_url} />
                 <div className="image-removal-link">
-                  <a onClick={() => this.deleteImage("logo_image")}>
+                  <a onClick={() => this.deleteImage("logo")}>
                     Remove File
                   </a>
                 </div>
