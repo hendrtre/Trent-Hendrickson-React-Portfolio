@@ -10,7 +10,7 @@ const NavigationComponent = (props) => {
             <div className="nav-link-wrapper">
                 <NavLink to={route} activeClassName="nav-link-active">
                     {linkText}
-             </NavLink>
+                </NavLink>
             </div>
         )
     }
@@ -71,7 +71,7 @@ const NavigationComponent = (props) => {
                 </div>
             </div>
         )
-    }
+}
 
 
 export default withRouter(NavigationComponent)

@@ -6,12 +6,12 @@ export default function() {
     return (
       <div className="content-page-wrapper">
         <div 
-            className="left-column"
-            style={{
-                background: "url(" + contactPagePicture + ") no-repeat",
-                backgroundSize: "contain",
-                backgroundPosition: "center"
-            }} 
+          className="left-column"
+          style={{
+              background: "url(" + contactPagePicture + ") no-repeat",
+              backgroundSize: "contain",
+              backgroundPosition: "center"
+          }} 
         />
         <div className="right-column">
         <div className="contact-bullet-points">
