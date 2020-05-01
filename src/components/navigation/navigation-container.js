@@ -33,7 +33,7 @@ const NavigationComponent = (props) => {
 
     return (
             <div className="nav-wrapper">
-                {/* <div className="left-side"> */}
+                <div className="left-side">
 
                     <div className="nav-link-wrapper">
                         <NavLink exact to="/" activeClassName="nav-link-active">
@@ -54,22 +54,22 @@ const NavigationComponent = (props) => {
                     </div>
 
 {/* I KNOW THAT THIS ISN'T PRETTY BUT I LEFT THE CODE FOR BLOG JUST IN CASE I EVER NEEDED IT FOR FUTURE REFERENCE OR USE */}
-                    {/* <div className="nav-link-wrapper">
+                    <div className="nav-link-wrapper">
                         <NavLink to="/blog" activeClassName="nav-link-active">
                             Blog
                         </NavLink>
-                    </div> */}
+                    </div>
 
 
                     {props.loggedInStatus === "LOGGED_IN" ? dynamicLink("/portfolio-manager", "Portfolio Manager") : null }
-                {/* </div> */}
+                </div>
                 
-                {/* <div className="right-side"> */}
+                <div className="right-side">
                     Trent Hendrickson
                     {props.loggedInStatus === 'LOGGED_IN' ? <a onClick={handleSignOut}>
                         <FontAwesomeIcon icon="sign-out-alt" />
                     </a> : null}
-                {/* </div> */}
+                </div>
             </div>
         )
 }
